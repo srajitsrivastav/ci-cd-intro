@@ -1,1 +1,25 @@
-
+name:Java CI CD with gradle
+on:
+push:
+  branches:[master]
+pull_request:
+  branches:[master]
+stages:
+    test
+    build
+    deploy
+jobs
+  helloword:
+    runs_on:[ubuntu-latest,macOS,windows-latest]
+    steps:
+    -uses:actions/checkout@v2
+      run:a="HEllO World'
+      echo a
+      shell:bash
+  goodbye:
+  needs :helloworld
+    runs_on:ubuntu-latest
+    steps:
+    -uses:actions/checkout@v1
+      run echo'${{helloworld.a}} + echo"good bye"
+      shell:bash
